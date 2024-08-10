@@ -50,42 +50,44 @@ def index():
         return redirect(url_for('login'))
 
     # Predefined device IDs list
-    device_ids = [
-        "70ad22a0-b82c-11ed-b196-bb47e24272bc",
-        "75d29440-b82c-11ed-b196-bb47e24272bc",
-        "a673eb80-b82c-11ed-b196-bb47e24272bc",
-        "83456b70-b82c-11ed-b196-bb47e24272bc",
-        "b96d6720-b82c-11ed-b196-bb47e24272bc",
-        "be98a520-b82c-11ed-b196-bb47e24272bc",
-        "c3110de0-b82c-11ed-b196-bb47e24272bc",
-        "c950f030-b82c-11ed-b196-bb47e24272bc",
-        "cfddba00-b82c-11ed-b196-bb47e24272bc",
-        "278505c0-0f7a-11ee-bf90-a16a1a9e1e0a",
-        "d9576a90-b82c-11ed-b196-bb47e24272bc",
-        "de18ea40-b82c-11ed-b196-bb47e24272bc",
-        "f57a1560-7cf3-11ee-94bc-d389020903a3",
-        "508d1b60-57eb-11ee-8714-19d56ba0c4fd",
-        "86c63bd0-57f0-11ee-8714-19d56ba0c4fd",
-        "3efd82d0-7cf4-11ee-94bc-d389020903a3",
-        "f583bc50-57e6-11ee-8714-19d56ba0c4fd",
-        "9458c560-0f75-11ee-bf90-a16a1a9e1e0a",
-        "2ae959b0-53c6-11ee-8714-19d56ba0c4fd",
-        "351b0eb0-57ef-11ee-8714-19d56ba0c4fd",
-        "0f96bed0-b82d-11ed-b196-bb47e24272bc",
-        "13e642d0-b82d-11ed-b196-bb47e24272bc",
-        "18a159e0-b82d-11ed-b196-bb47e24272bc",
-        "fef50770-57f1-11ee-8714-19d56ba0c4fd",
-        "2a5d9a90-b82d-11ed-b196-bb47e24272bc",
-        "99c6a3b0-b82b-11ed-b196-bb47e24272bc",
-        "51f2d170-57e1-11ee-8714-19d56ba0c4fd",
-        "9c563630-0f75-11ee-bf90-a16a1a9e1e0a",
-        "391303e0-b82d-11ed-b196-bb47e24272bc",
-        "3d3a3f60-b82d-11ed-b196-bb47e24272bc",
-        "4665a8e0-b82d-11ed-b196-bb47e24272bc",
-        "b9cb09a0-11ec-11ef-b56b-a96a8be1c6f5"
-    ]
-
-    return render_template('index.html', device_ids=device_ids)
+    device_map = {
+        "sensor_node_01": "70ad22a0-b82c-11ed-b196-bb47e24272bc",
+        "sensor_node_02": "75d29440-b82c-11ed-b196-bb47e24272bc",
+        "sensor_node_04": "a673eb80-b82c-11ed-b196-bb47e24272bc",
+        "sensor_node_05": "83456b70-b82c-11ed-b196-bb47e24272bc",
+        "sensor_node_06": "b96d6720-b82c-11ed-b196-bb47e24272bc",
+        "sensor_node_07": "be98a520-b82c-11ed-b196-bb47e24272bc",
+        "sensor_node_08": "c3110de0-b82c-11ed-b196-bb47e24272bc",
+        "sensor_node_09": "c950f030-b82c-11ed-b196-bb47e24272bc",
+        "sensor_node_10": "cfddba00-b82c-11ed-b196-bb47e24272bc",
+        "sensor_node_11": "278505c0-0f7a-11ee-bf90-a16a1a9e1e0a",
+        "sensor_node_12": "d9576a90-b82c-11ed-b196-bb47e24272bc",
+        "sensor_node_13": "de18ea40-b82c-11ed-b196-bb47e24272bc",
+        "sensor_node_14": "f57a1560-7cf3-11ee-94bc-d389020903a3",
+        "sensor_node_15": "508d1b60-57eb-11ee-8714-19d56ba0c4fd",
+        "sensor_node_16": "86c63bd0-57f0-11ee-8714-19d56ba0c4fd",
+        "sensor_node_17": "3efd82d0-7cf4-11ee-94bc-d389020903a3",
+        "sensor_node_18": "f583bc50-57e6-11ee-8714-19d56ba0c4fd",
+        "sensor_node_19": "9458c560-0f75-11ee-bf90-a16a1a9e1e0a",
+        "sensor_node_21": "2ae959b0-53c6-11ee-8714-19d56ba0c4fd",
+        "sensor_node_22": "351b0eb0-57ef-11ee-8714-19d56ba0c4fd",
+        "sensor_node_23": "0f96bed0-b82d-11ed-b196-bb47e24272bc",
+        "sensor_node_24": "13e642d0-b82d-11ed-b196-bb47e24272bc",
+        "sensor_node_25": "18a159e0-b82d-11ed-b196-bb47e24272bc",
+        "sensor_node_26": "fef50770-57f1-11ee-8714-19d56ba0c4fd",
+        "sensor_node_27": "2a5d9a90-b82d-11ed-b196-bb47e24272bc",
+        "sensor_node_28": "99c6a3b0-b82b-11ed-b196-bb47e24272bc",
+        "sensor_node_29": "51f2d170-57e1-11ee-8714-19d56ba0c4fd",
+        "sensor_node_30": "9c563630-0f75-11ee-bf90-a16a1a9e1e0a",
+        "sensor_node_31": "391303e0-b82d-11ed-b196-bb47e24272bc",
+        "sensor_node_32": "3d3a3f60-b82d-11ed-b196-bb47e24272bc",
+        "sensor_node_34": "4665a8e0-b82d-11ed-b196-bb47e24272bc",
+        "sensor_node_35": "b9cb09a0-11ec-11ef-b56b-a96a8be1c6f5"
+    }
+        # Predefined device names and their corresponding IDs
+    device_names = list(device_map.keys())
+    device_ids = list(device_map.values())
+    return render_template('index.html', device_names=device_names, device_ids=device_ids, device_map=device_map)
 
 @app.route('/download', methods=['POST'])
 def download_data():
@@ -170,5 +172,8 @@ def logout():
     session.pop('username', None)
     return redirect(url_for('login'))
 
+@app.route('/terms')
+def terms():
+    return render_template('terms.html')
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

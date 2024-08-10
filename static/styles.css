@@ -1,0 +1,26 @@
+/* static/styles.css */
+
+/* Custom styles for the body background color */
+body {
+    background-color: #f8f9fa; /* Light background for better contrast */
+}
+
+/* Customize the checkbox container */
+.checkbox-container {
+    max-height: 100px; /* Limit height for scrollable checkboxes */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ced4da; /* Border color matching Bootstrap */
+    background: #ffffff; /* White background for the container */
+    margin-bottom: 20px; /* Space below the checkbox container */
+}
+
+
+/* Error message styling */
+.alert {
+    margin-bottom: 20px; /* Space below alert */
+}
+
+/* Button styling (optional overrides) */
+.btn {
+    font-weight: bold; /* Make button text bold */
+}
