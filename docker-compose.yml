@@ -1,0 +1,17 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+    networks:
+      - external-network
+    volumes:
+      - .:/usr/src/app
+    restart: always
+    
+networks:
+  external-network:
+    external: true

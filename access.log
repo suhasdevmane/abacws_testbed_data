@@ -1,0 +1,130 @@
+WARNING:cassandra.cluster:Cluster.__init__ called with contact_points specified, but no load_balancing_policy. In the next major version, this will raise an error; please specify a load-balancing policy. (contact_points = ['smarthomelab-cassandradb.cs.cf.ac.uk'], lbp = None)
+WARNING:cassandra.cluster:Downgrading core protocol version from 66 to 65 for 10.255.128.87:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+WARNING:cassandra.cluster:Downgrading core protocol version from 65 to 5 for 10.255.128.87:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+INFO:cassandra.policies:Using datacenter 'datacenter1' for DCAwareRoundRobinPolicy (via host '10.255.128.87:9042'); if incorrect, please specify a local_dc to the constructor, or limit contact points to local cluster nodes
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.22.0.2:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.22.0.1 - - [10/Aug/2024 01:44:13] "GET / HTTP/1.1" 200 -
+WARNING:root:Failed login attempt for username: admin at 2024-08-10 01:44:57.062788
+INFO:werkzeug:172.22.0.1 - - [10/Aug/2024 01:44:57] "POST / HTTP/1.1" 200 -
+INFO:werkzeug:172.22.0.1 - - [10/Aug/2024 01:45:12] "GET / HTTP/1.1" 200 -
+ERROR:app:Exception on / [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/usr/src/app/app.py", line 33, in login
+    session['username'] = username
+TypeError: 'Session' object does not support item assignment
+INFO:werkzeug:172.22.0.1 - - [10/Aug/2024 01:45:17] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+ERROR:app:Exception on / [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/usr/src/app/app.py", line 33, in login
+    session['username'] = username
+TypeError: 'Session' object does not support item assignment
+INFO:werkzeug:172.22.0.1 - - [10/Aug/2024 01:45:21] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+ERROR:app:Exception on / [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/usr/src/app/app.py", line 33, in login
+    session['username'] = username
+TypeError: 'Session' object does not support item assignment
+INFO:werkzeug:172.22.0.1 - - [10/Aug/2024 01:45:25] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+ERROR:app:Exception on / [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/usr/src/app/app.py", line 33, in login
+    session['username'] = username
+TypeError: 'Session' object does not support item assignment
+INFO:werkzeug:172.22.0.1 - - [10/Aug/2024 01:45:31] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+WARNING:cassandra.cluster:Cluster.__init__ called with contact_points specified, but no load_balancing_policy. In the next major version, this will raise an error; please specify a load-balancing policy. (contact_points = ['smarthomelab-cassandradb.cs.cf.ac.uk'], lbp = None)
+WARNING:cassandra.cluster:Downgrading core protocol version from 66 to 65 for 10.255.128.87:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+WARNING:cassandra.cluster:Downgrading core protocol version from 65 to 5 for 10.255.128.87:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+INFO:cassandra.policies:Using datacenter 'datacenter1' for DCAwareRoundRobinPolicy (via host '10.255.128.87:9042'); if incorrect, please specify a local_dc to the constructor, or limit contact points to local cluster nodes
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.22.0.2:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+ERROR:app:Exception on / [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/usr/src/app/app.py", line 33, in login
+    session['username'] = username
+TypeError: 'Session' object does not support item assignment
+INFO:werkzeug:172.22.0.1 - - [10/Aug/2024 01:46:56] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+ERROR:app:Exception on / [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/usr/src/app/app.py", line 33, in login
+    session['username'] = username
+TypeError: 'Session' object does not support item assignment
+INFO:werkzeug:172.22.0.1 - - [10/Aug/2024 01:47:29] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+WARNING:cassandra.cluster:Cluster.__init__ called with contact_points specified, but no load_balancing_policy. In the next major version, this will raise an error; please specify a load-balancing policy. (contact_points = ['smarthomelab-cassandradb.cs.cf.ac.uk'], lbp = None)
+WARNING:cassandra.cluster:Downgrading core protocol version from 66 to 65 for 10.255.128.87:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+WARNING:cassandra.cluster:Downgrading core protocol version from 65 to 5 for 10.255.128.87:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+INFO:cassandra.policies:Using datacenter 'datacenter1' for DCAwareRoundRobinPolicy (via host '10.255.128.87:9042'); if incorrect, please specify a local_dc to the constructor, or limit contact points to local cluster nodes
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.22.0.2:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.22.0.1 - - [10/Aug/2024 01:49:32] "GET / HTTP/1.1" 200 -
+ERROR:app:Exception on / [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/usr/src/app/app.py", line 35, in login
+    session['username'] = username
+TypeError: 'Session' object does not support item assignment
+INFO:werkzeug:172.22.0.1 - - [10/Aug/2024 01:49:47] "[35m[1mPOST / HTTP/1.1[0m" 500 -

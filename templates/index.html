@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensor Data Collection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="datetime-local"],
+        input[type="submit"],
+        input[type="text"],
+        input[type="password"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            width: 100%;
+        }
+
+        .device-checkbox {
+            margin-bottom: 10px;
+        }
+
+        .device-checkbox label {
+            display: inline-block;
+            margin-left: 5px;
+        }
+
+        .checkbox-container {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background: #fafafa;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .error-message {
+            color: red;
+            margin-bottom: 10px;
+        }
+
+        .logout-link {
+            margin-top: 10px;
+            display: inline-block;
+            padding: 8px 12px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .logout-link:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    {% if 'username' not in session %}
+        <h2>Login</h2>
+        {% if error %}
+            <div class="error-message">{{ error }}</div>
+        {% endif %}
+        <form action="/" method="post">
+            <label for="username">Username:</label>
+            <input type="text" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" required>
+
+            <input type="submit" value="Login">
+        </form>
+    {% else %}
+        <h2>Sensor Data Collection</h2>
+        <form action="/download" method="post">
+            <label for="device_ids">Select Device IDs:</label><br>
+            <div class="checkbox-container">
+                {% for device_id in device_ids %}
+                <div class="device-checkbox">
+                    <input type="checkbox" id="{{ device_id }}" name="device_ids" value="{{ device_id }}">
+                    <label for="{{ device_id }}">{{ device_id }}</label>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <label for="start_datetime">Start Date and Time:</label>
+            <input type="datetime-local" name="start_datetime" required><br>
+
+            <label for="end_datetime">End Date and Time:</label>
+            <input type="datetime-local" name="end_datetime" required><br>
+
+            <input type="submit" value="Download Data">
+        </form>
+        <a href="/logout" class="logout-link">Logout</a>
+    {% endif %}
+</body>
+</html>
