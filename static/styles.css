@@ -10,6 +10,12 @@ body {
     font-family: cursive;
     font-weight: lighter;
 }
+.hero {
+    background: #007bff; /* Primary color */
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+}
 .sensor-status.offline {
     color: red;
     font-size: x-small;
@@ -74,7 +80,7 @@ body {
 
 /* Styling for the sensor list section */
 .sensor-list {
-    width: 35%; /* Set width to 40% of the page */
+    width: 37%; /* Set width to 40% of the page */
     margin-right: 20px;
     height: 400px; /* Set the height for the sensor list */
     overflow-y: auto; /* Allow scrolling if content exceeds height */
@@ -82,7 +88,7 @@ body {
 
 /* Styling for the sensor image section */
 .sensor-image {
-    width: 65%; /* Set width to 60% of the page */
+    width: 63%; /* Set width to 60% of the page */
     height: 400px; /* Set the height to match the sensor list */
     text-align: center;
     display: flex;

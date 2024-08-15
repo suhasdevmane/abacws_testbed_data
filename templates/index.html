@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Welcome to the Sensor Testbed Dashboard</h1>
+    <div class="hero">
+        <h1>Welcome to the Sensor Testbed Dashboard</h1>
+        <p>Monitor and manage your sensor data effectively.</p>
+    </div>
     <div class="container mt-5">
         {% if 'username' not in session %}
             <h2>Login</h2>
@@ -68,9 +71,10 @@
                     <input type="datetime-local" name="end_datetime" class="form-control" required>
                 </div>
 
-                <button type="submit" class="btn btn-success">Download Data</button>
+                <button type="submit" class="btn btn-success btn-block">Download Data</button>
+
             </form>
-            <a href="/logout" class="btn btn-danger mt-3">Logout</a>
+            <a href="/logout" class="btn btn-danger btn-block mt-3">Logout</a>
 
             <!-- Progress Bar -->
             <div id="progress-container" style="display: none;">
