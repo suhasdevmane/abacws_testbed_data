@@ -4,16 +4,30 @@
 body {
     background-color: #f8f9fa; /* Light background for better contrast */
 }
-
+.sensor-status.online {
+    color: green;
+    font-size: x-small;
+    font-family: cursive;
+    font-weight: lighter;
+}
+.sensor-status.offline {
+    color: red;
+    font-size: x-small;
+    font-family: cursive;
+    font-weight: lighter;
+}
 /* Customize the checkbox container */
 .checkbox-container {
-    max-height: 100px; /* Limit height for scrollable checkboxes */
-    overflow-y: auto; /* Enable vertical scrolling */
+    height: 400px; /* Set the height to match the image and sensor list */
     border: 1px solid #ced4da; /* Border color matching Bootstrap */
     background: #ffffff; /* White background for the container */
     margin-bottom: 20px; /* Space below the checkbox container */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    column-gap: 5px; /* Space between the columns */
+    padding: 10px;
+    overflow: hidden; /* Prevent scrolling */
 }
-
 
 /* Error message styling */
 .alert {
@@ -23,4 +37,71 @@ body {
 /* Button styling (optional overrides) */
 .btn {
     font-weight: bold; /* Make button text bold */
+}
+
+/* Progress bar container styling */
+#progress-container {
+    display: none; /* Hide the progress bar initially */
+    margin-top: 20px;
+}
+
+/* Progress bar styling */
+#progress-bar {
+    width: 0%;
+}
+
+/* Contact information section styling */
+.contact-info {
+    margin-top: 40px;
+    padding: 20px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Modal body styling */
+.modal-body {
+    word-wrap: break-word;
+}
+
+/* Flex container for sensor list and image */
+.sensor-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%; /* Ensure the container takes up the full width of the page */
+}
+
+/* Styling for the sensor list section */
+.sensor-list {
+    width: 35%; /* Set width to 40% of the page */
+    margin-right: 20px;
+    height: 400px; /* Set the height for the sensor list */
+    overflow-y: auto; /* Allow scrolling if content exceeds height */
+}
+
+/* Styling for the sensor image section */
+.sensor-image {
+    width: 65%; /* Set width to 60% of the page */
+    height: 400px; /* Set the height to match the sensor list */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Styling for the sensor image */
+.sensor-image img {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 0px;
+    padding: 0px;
+}
+
+/* Search bar styling */
+.search-bar {
+    margin-bottom: 20px;
 }

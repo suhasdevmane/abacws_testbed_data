@@ -6,30 +6,9 @@
     <title>Sensor Data Collection</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <style>
-        #progress-container {
-            display: none; /* Hide the progress bar initially */
-            margin-top: 20px;
-        }
-
-        #progress-bar {
-            width: 0%;
-        }
-
-        .contact-info {
-            margin-top: 40px;
-            padding: 20px;
-            background: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        .modal-body {
-            word-wrap: break-word;
-        }
-    </style>
 </head>
 <body>
+    <h1>Welcome to the Sensor Testbed Dashboard</h1>
     <div class="container mt-5">
         {% if 'username' not in session %}
             <h2>Login</h2>
@@ -49,22 +28,36 @@
             </form>
         {% else %}
             <h2>Sensor Data Collection</h2>
+
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <input type="text" id="sensor-search" class="form-control" placeholder="Search sensors..." onkeyup="filterSensors()">
+            </div>
+
             <form id="data-form" action="/download" method="post" onsubmit="showProgressBar()">
-                <div class="form-group">
-                    <label for="device_ids">Select Device IDs:</label>
-                    <div class="checkbox-container">
-                        {% for device_name in device_names %}
-                        <div class="device-checkbox">
-                            <input type="checkbox" id="{{ device_name }}" name="device_ids" value="{{ device_map[device_name] }}">
-                            <label for="{{ device_name }}">{{ device_name }}</label>
+                <div class="sensor-container">
+                    <div class="sensor-list">
+                        <div class="form-group">
+                            <label for="device_ids">Select Device IDs:</label>
+                            <div class="checkbox-container" id="sensor-list">
+                                {% for device_name in device_names %}
+                                <div class="device-checkbox">
+                                    <input type="checkbox" id="{{ device_name }}" name="device_ids" value="{{ device_map[device_name] }}">
+                                    <label for="{{ device_name }}">{{ device_name }}</label>
+                                    <span class="sensor-status {{ sensor_statuses[device_name] | lower }}">
+                                        {{ sensor_statuses[device_name] }}
+                                    </span>
+                                </div>
+                                {% endfor %}
+                            </div>
                         </div>
-                        {% endfor %}
+                    </div>
+
+                    <div class="sensor-image">
+                        <img src="{{ url_for('static', filename='Sensors_plan.png') }}" alt="Device Illustration" class="img-fluid">
                     </div>
                 </div>
-                <!-- Add your image here -->
-                <div class="text-center mt-3">
-                <img src="{{ url_for('static', filename='Sensors_plan.png') }}" alt="Device Illustration" class="img-fluid" style="max-width: 100%; height: auto;">
-                </div>
+
                 <div class="form-group">
                     <label for="start_datetime">Start Date and Time:</label>
                     <input type="datetime-local" name="start_datetime" class="form-control" required>
@@ -80,7 +73,7 @@
             <a href="/logout" class="btn btn-danger mt-3">Logout</a>
 
             <!-- Progress Bar -->
-            <div id="progress-container">
+            <div id="progress-container" style="display: none;">
                 <div class="progress">
                     <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
@@ -118,7 +111,6 @@
         </div>
     </div>
 
-
     <script>
         function showTermsModal(event) {
             event.preventDefault(); // Prevent form submission
@@ -150,6 +142,22 @@
                     statusMessage.remove(); // Remove the status message
                 }, 1000); // Keep the 'Downloaded' message for 1 second before resetting
             }, 5000); // Show the message after 5 seconds
+        }
+
+        function filterSensors() {
+            const searchInput = document.getElementById('sensor-search').value.toLowerCase();
+            const sensorList = document.getElementById('sensor-list');
+            const sensors = sensorList.getElementsByClassName('device-checkbox');
+
+            for (let i = 0; i < sensors.length; i++) {
+                const label = sensors[i].getElementsByTagName('label')[0];
+                const sensorName = label.textContent || label.innerText;
+                if (sensorName.toLowerCase().indexOf(searchInput) > -1) {
+                    sensors[i].style.display = "";
+                } else {
+                    sensors[i].style.display = "none";
+                }
+            }
         }
     </script>
 

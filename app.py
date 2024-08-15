@@ -1,13 +1,17 @@
-from flask import Flask, render_template, request, redirect, url_for, send_file, session
+from flask import Flask, render_template, request, redirect, url_for, send_file, session, jsonify
 from cassandra.cluster import Cluster
 from cassandra.auth import PlainTextAuthProvider
 from cassandra.util import datetime_from_timestamp
 import uuid
 import io
 import csv
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 import logging
 import os
+import requests
+# Import the sensor status logic
+from sensor_status import sensor_statuses
+
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -24,8 +28,10 @@ cassandra_session = cluster.connect('thingsboard')
 # Simple user data for demonstration
 users = {
     "admin": "admin_password",
-    "user1": "password1"  # Add more users as needed
+    "user1": "password1",
+    "user2": "user2password" # Add more users as needed
 }
+# Dictionary to store sensor statuses
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
@@ -87,7 +93,8 @@ def index():
         # Predefined device names and their corresponding IDs
     device_names = list(device_map.keys())
     device_ids = list(device_map.values())
-    return render_template('index.html', device_names=device_names, device_ids=device_ids, device_map=device_map)
+    return render_template('index.html', device_names=device_names, device_ids=device_ids, device_map=device_map, sensor_statuses=sensor_statuses)
+
 
 @app.route('/download', methods=['POST'])
 def download_data():
@@ -164,6 +171,10 @@ def download_data():
         as_attachment=True,
         download_name='sensor_data.csv'
     )
+
+@app.route('/sensor-status', methods=['GET'])
+def get_sensor_status():
+    return jsonify(sensor_statuses)
 
 @app.route('/logout')
 def logout():
